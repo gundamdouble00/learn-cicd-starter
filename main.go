@@ -3,11 +3,11 @@ package main
 import (
 	"database/sql"
 	"embed"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 
 	"github.com/go-chi/chi"
@@ -96,9 +96,7 @@ func main() {
 		ReadTimeout: time.Minute * 10,
 	}
 
-	port = strings.TrimSpace(port)
-	port = strings.Trim(port, "\r")
-	log.Printf("Serving on port: %s\n", port)
+	fmt.Printf("Serving on port: %s\n", port)
 	log.Fatal(srv.ListenAndServe())
 }
 
